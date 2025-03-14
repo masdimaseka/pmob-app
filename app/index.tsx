@@ -1,57 +1,65 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import Card from "@/components/Card";
 import InputName from "@/components/InputName";
+import globalStyles from "@/styles/globalStyles";
+import { useRouter } from "expo-router";
 
-export default function Index() {
+export default function HomeScreen() {
+  const router = useRouter();
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Welcome to Primakara</Text>
-      <View>
-        <ScrollView
-          horizontal={true}
-          style={{ marginTop: 16, paddingBottom: 16 }}
-        >
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 16,
-            }}
+    <SafeAreaView style={[globalStyles.container, { flex: 1 }]}>
+      <ScrollView>
+        <Text style={globalStyles.title}>Welcome to Primakara</Text>
+        <View style={{ marginTop: 16 }}>
+          <Text style={globalStyles.subTitle}>What's your name?</Text>
+          <InputName />
+        </View>
+
+        <View>
+          <ScrollView
+            horizontal={true}
+            style={{ marginTop: 16, paddingBottom: 16 }}
           >
-            <Card
-              image={require("../assets/images/banners/general.jpg")}
-              title="General 1"
-            />
-            <Card
-              image={require("../assets/images/banners/programming.jpg")}
-              title="General 2"
-            />
-            <Card
-              image={require("../assets/images/banners/general.jpg")}
-              title="General 3"
-            />
-          </View>
-        </ScrollView>
-      </View>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 16,
+              }}
+            >
+              <Card
+                image={require("../assets/images/banners/general.jpg")}
+                title="General 1"
+              />
+              <Card
+                image={require("../assets/images/banners/programming.jpg")}
+                title="General 2"
+              />
+              <Card
+                image={require("../assets/images/banners/general.jpg")}
+                title="General 3"
+              />
+            </View>
+          </ScrollView>
+        </View>
 
-      <View style={{ marginTop: 16 }}>
-        <Text style={styles.title}>What's your name?</Text>
-        <InputName />
-      </View>
-
-      <View style={{ marginTop: 16 }}>
-        <Text style={styles.title}>Galleries</Text>
-      </View>
-    </ScrollView>
+        <View style={{ marginTop: 16 }}>
+          <Text style={globalStyles.title}>Galleries</Text>
+          <Pressable
+            style={globalStyles.inputBtn}
+            onPress={() => router.push("/galleries")}
+          >
+            <Text style={globalStyles.inputBtnText}>Get Albums</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 24,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-});
