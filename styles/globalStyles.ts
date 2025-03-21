@@ -26,7 +26,33 @@ const globalStyles = StyleSheet.create({
   },
   inputBtnText: {
     color: "#fff",
-    fontWeight: "semibold",
+    fontWeight: "bold",
+  },
+  modalBg: {
+    backgroundColor: "#fff",
+    padding: 24,
+    borderRadius: 8,
+    borderColor: "lightgray",
+    borderWidth: 0.5,
+    marginTop: 8,
+    marginBottom: 16,
+  },
+  inputBox: {
+    backgroundColor: "#f7f7f7",
+    paddingVertical: 4,
+    borderRadius: 8,
+    borderColor: "lightgray",
+    borderWidth: 0.5,
+    marginBottom: 16,
+    display: "flex",
+    alignItems: "center",
+  },
+  inputTextBox: {
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: "lightgray",
+    backgroundColor: "#fff",
+    height: 40,
   },
 });
 

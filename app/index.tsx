@@ -2,64 +2,70 @@ import {
   Pressable,
   SafeAreaView,
   ScrollView,
-  StyleSheet,
   Text,
+  TextInput,
   View,
 } from "react-native";
-import Card from "@/components/Card";
-import InputName from "@/components/InputName";
 import globalStyles from "@/styles/globalStyles";
-import { useRouter } from "expo-router";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { useState } from "react";
 
 export default function HomeScreen() {
-  const router = useRouter();
+  const [textHello, setTextHello] = useState("");
+  const [inputText, setInputText] = useState("");
+  const [submitText, setSubmitText] = useState("");
+
+  const handleSubmit = () => {
+    setSubmitText(inputText);
+    setInputText("");
+  };
+
   return (
-    <SafeAreaView style={[globalStyles.container, { flex: 1 }]}>
-      <ScrollView>
-        <Text style={globalStyles.title}>Welcome to Primakara</Text>
-        <View style={{ marginTop: 16 }}>
-          <Text style={globalStyles.subTitle}>What's your name?</Text>
-          <InputName />
-        </View>
-
-        <View>
-          <ScrollView
-            horizontal={true}
-            style={{ marginTop: 16, paddingBottom: 16 }}
-          >
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                gap: 16,
-              }}
-            >
-              <Card
-                image={require("../assets/images/banners/general.jpg")}
-                title="General 1"
-              />
-              <Card
-                image={require("../assets/images/banners/programming.jpg")}
-                title="General 2"
-              />
-              <Card
-                image={require("../assets/images/banners/general.jpg")}
-                title="General 3"
-              />
+    <SafeAreaProvider style={[globalStyles.container, { flex: 1 }]}>
+      <SafeAreaView>
+        <ScrollView>
+          <Text style={globalStyles.title}>1. Menampilkan Teks</Text>
+          <View style={globalStyles.modalBg}>
+            <View style={globalStyles.inputBox}>
+              <Text style={[globalStyles.title, { color: "#1ab3f0" }]}>
+                {textHello}
+              </Text>
             </View>
-          </ScrollView>
-        </View>
+            <Pressable
+              style={globalStyles.inputBtn}
+              onPress={
+                !textHello
+                  ? () => setTextHello("Hello World")
+                  : () => setTextHello("")
+              }
+            >
+              <Text style={globalStyles.inputBtnText}>
+                {!textHello ? "Tampilkan" : "Sembunyikan"}
+              </Text>
+            </Pressable>
+          </View>
 
-        <View style={{ marginTop: 16 }}>
-          <Text style={globalStyles.title}>Galleries</Text>
-          <Pressable
-            style={globalStyles.inputBtn}
-            onPress={() => router.push("/galleries")}
-          >
-            <Text style={globalStyles.inputBtnText}>Get Albums</Text>
-          </Pressable>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          <Text style={globalStyles.title}>2. Menampilkan Teks Input</Text>
+          <View style={globalStyles.modalBg}>
+            <View style={globalStyles.inputBox}>
+              <Text style={[globalStyles.title, { color: "#1ab3f0" }]}>
+                {submitText}
+              </Text>
+            </View>
+            <View>
+              <TextInput
+                placeholder="Masukkan teks"
+                style={globalStyles.inputTextBox}
+                onChangeText={setInputText}
+                value={inputText}
+              />
+              <Pressable style={globalStyles.inputBtn} onPress={handleSubmit}>
+                <Text style={globalStyles.inputBtnText}>Submit</Text>
+              </Pressable>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
