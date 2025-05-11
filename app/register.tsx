@@ -1,10 +1,13 @@
 import BtnPrimary from "@/components/BtnPrimary";
-import { FIREBASE_AUTH } from "@/firebaseconfig";
+import { Colors } from "@/constant/COLORS";
+import { FIREBASE_AUTH } from "@/firebase.config";
 import { GlobalStyles } from "@/style/global.style";
+import { Link } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import {
   ActivityIndicator,
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -40,27 +43,55 @@ export default function Register() {
 
   return (
     <View style={GlobalStyles.container}>
-      <Text style={GlobalStyles.title}>Register</Text>
-      <TextInput
-        style={styles.formInput}
-        value={email}
-        onChangeText={setEmail}
-        placeholder="Email"
-      />
-      <TextInput
-        style={styles.formInput}
-        value={password}
-        onChangeText={setPassword}
-        placeholder="Password"
-        secureTextEntry
-      />
+      <View style={{ alignItems: "center" }}>
+        <Image
+          style={{
+            width: 64,
+            height: 64,
+            marginBottom: 24,
+            borderRadius: 100,
+          }}
+          source={require("@/assets/images/rev.jpg")}
+        />
+      </View>
+      <View style={{ marginVertical: 16 }}>
+        <Text style={[GlobalStyles.title, { textAlign: "center" }]}>
+          Register
+        </Text>
+        <TextInput
+          style={styles.formInput}
+          value={email}
+          onChangeText={setEmail}
+          placeholder="Email"
+        />
+        <TextInput
+          style={styles.formInput}
+          value={password}
+          onChangeText={setPassword}
+          placeholder="Password"
+          secureTextEntry
+        />
+      </View>
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <>
-          <BtnPrimary text="Login" onPress={signUp} />
+          <BtnPrimary text="Register" onPress={signUp} />
         </>
       )}
+      <View
+        style={{
+          gap: 4,
+          flexDirection: "row",
+          justifyContent: "center",
+          marginTop: 12,
+        }}
+      >
+        <Text>Already have an account?</Text>
+        <Link style={{ color: Colors.primary }} href="/login">
+          Login Here
+        </Link>
+      </View>
     </View>
   );
 }
