@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "267813018543",
+    "project_id": "jalinplatform",
+    "storage_bucket": "jalinplatform.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267813018543:android:3d40422f81b6aad7222d5a",
+        "android_client_info": {
+          "package_name": "com.masdimaskea.pmobapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267813018543-2dc93rushki3j0c8dbaaeo8cu0b6fhjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masdimaskea.pmobapp",
+            "certificate_hash": "ddf9b70d125b252eebd53323b3ee0b1049d1f400"
+          }
+        },
+        {
+          "client_id": "267813018543-h7k7cuqif5uchlqij0ml7oc1onhesi4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1E9yRH7dUibSAcWpxTEa727dwn63mOJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267813018543-h7k7cuqif5uchlqij0ml7oc1onhesi4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,7 +16,9 @@
         "foregroundImage": "./assets/images/rev.jpg",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.masdimaskea.pmobapp",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +39,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a41e3c46-f141-4d96-9c68-834dab1b335d"
+      }
     }
   }
 }
